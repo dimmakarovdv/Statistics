@@ -1,15 +1,8 @@
 package ru.netology.monthlySalesService.services;
 
 public class StatsService {
-    public long sumOfAllSales(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        return sum;
-    }
 
-    public long SumOfAllSales(long[] sales) {
+    public long sumOfAllSales(long[] sales) {
         long total = 0;
         for (long sale : sales) {
             total += sale;
@@ -17,10 +10,8 @@ public class StatsService {
         return total;
     }
 
-    public long AverageMonthlySales(long[] sales) {
-        long total = SumOfAllSales(sales);
-        long average = total / 12;
-        return average;
+    public long averageMonthlySales(long[] sales) {
+        return sumOfAllSales(sales) / 12;
     }
 
     public int salesForTheMaximumAmountMonth(long[] sales) {
@@ -45,7 +36,7 @@ public class StatsService {
 
     public int numberMonthsWithMinSales(long[] sales) {
         int minSales = 0;
-        long average = SumOfAllSales(sales) / 12;
+        long average = averageMonthlySales(sales);
         for (long sale : sales) {
             if (sale < average) {
                 minSales++;
@@ -56,7 +47,7 @@ public class StatsService {
 
     public int numberMonthsWithMaxSales(long[] sales) {
         int maxSales = 0;
-        long average = SumOfAllSales(sales) / 12;
+        long average = averageMonthlySales(sales);
         for (long sale : sales) {
             if (sale > average) {
                 maxSales++;
